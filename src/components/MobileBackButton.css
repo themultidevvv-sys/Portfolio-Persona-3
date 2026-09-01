@@ -1,0 +1,92 @@
+.mobile-back-btn {
+	position: fixed;
+	top: calc(env(safe-area-inset-top, 0px) + 10px);
+	left: calc(env(safe-area-inset-left, 0px) + 10px);
+	z-index: 200;
+	min-width: 58px;
+	height: 58px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 0 16px 0 14px;
+	border: 1px solid rgba(145, 245, 255, 0.7);
+	cursor: pointer;
+	background: linear-gradient(
+		180deg,
+		rgba(13, 23, 74, 0.98),
+		rgba(7, 13, 41, 0.98)
+	);
+	color: #ecfcff;
+	font-family: "Bebas Neue", sans-serif;
+	font-size: 26px;
+	line-height: 1;
+	clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+	box-shadow:
+		0 8px 20px rgba(0, 0, 0, 0.42),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+		inset 0 -8px 0 rgba(0, 0, 0, 0.18);
+	transition:
+		transform 0.16s ease,
+		background 0.16s ease,
+		box-shadow 0.16s ease;
+	user-select: none;
+	pointer-events: all;
+	touch-action: manipulation;
+	overflow: hidden;
+}
+
+.mobile-back-btn:hover {
+	transform: translateY(-1px);
+	background: linear-gradient(180deg, rgba(18, 32, 98, 1), rgba(10, 18, 58, 1));
+	box-shadow:
+		0 10px 24px rgba(0, 0, 0, 0.46),
+		inset 0 0 0 1px rgba(145, 245, 255, 0.92),
+		inset 0 -10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mobile-back-btn:active {
+	transform: translateY(0);
+}
+
+.mobile-back-btn:focus-visible {
+	outline: 2px solid rgba(149, 246, 255, 0.95);
+	outline-offset: 2px;
+}
+
+.mobile-back-btn-arrow {
+	color: #95f6ff;
+	transform: translateX(-1px);
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.mobile-back-btn-label {
+	color: #ecfcff;
+	letter-spacing: 1px;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+	white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+	.mobile-back-btn {
+		top: calc(env(safe-area-inset-top, 0px) + 8px);
+		left: calc(env(safe-area-inset-left, 0px) + 8px);
+		min-width: 60px;
+		height: 60px;
+		padding: 0 18px 0 15px;
+		font-size: 29px;
+		box-shadow:
+			0 10px 24px rgba(0, 0, 0, 0.44),
+			inset 0 0 0 1px rgba(145, 245, 255, 0.92),
+			inset 0 -8px 0 rgba(0, 0, 0, 0.18);
+	}
+}
+
+@media (max-height: 680px) {
+	.mobile-back-btn {
+		min-width: 50px;
+		height: 50px;
+		padding: 0 14px 0 12px;
+		font-size: 24px;
+	}
+}
