@@ -12,49 +12,28 @@ export default function BackgroundMusic({ src, muted = true }) {
 		audio.defaultMuted = true;
 		audio.muted = muted;
 		audio.volume = 0.25;
-		const applyDesiredMute = () => {
-			audio.muted = muted;
-		};
 
 		const tryPlay = () => {
-			audio.muted = true;
-			audio
-				.play()
-				.then(() => {
-					applyDesiredMute();
-				})
-				.catch(() => {
+			audio.muted = muted;
+			const playPromise = audio.play();
+			if (playPromise !== undefined) {
+				playPromise.catch(() => {
 					// Autoplay can be blocked on some browsers until user interaction.
 				});
-		};
-
-		const ensureLoopingPlayback = () => {
-			if (audio.ended) {
-				audio.currentTime = 0;
-				tryPlay();
-				return;
-			}
-			if (audio.paused && !document.hidden) {
-				tryPlay();
 			}
 		};
 
 		const syncAudioAfterGesture = () => {
-			if (muted) {
-				audio.muted = true;
-				return;
-			}
-			if (audio.paused) {
+			audio.muted = muted;
+			if (audio.paused && !muted) {
 				tryPlay();
-				return;
 			}
-			applyDesiredMute();
 		};
 
 		tryPlay();
 		audio.addEventListener("canplay", tryPlay);
 		audio.addEventListener("loadeddata", tryPlay);
-		audio.addEventListener("ended", ensureLoopingPlayback);
+
 		window.addEventListener("pointerdown", syncAudioAfterGesture);
 		window.addEventListener("keydown", syncAudioAfterGesture);
 		window.addEventListener("touchstart", syncAudioAfterGesture, {
@@ -62,16 +41,16 @@ export default function BackgroundMusic({ src, muted = true }) {
 		});
 
 		const onVisibilityChange = () => {
-			if (!document.hidden) ensureLoopingPlayback();
+			if (!document.hidden && audio.paused && !muted) {
+				tryPlay();
+			}
 		};
 
 		document.addEventListener("visibilitychange", onVisibilityChange);
 
 		return () => {
-			audio.pause();
 			audio.removeEventListener("canplay", tryPlay);
 			audio.removeEventListener("loadeddata", tryPlay);
-			audio.removeEventListener("ended", ensureLoopingPlayback);
 			window.removeEventListener("pointerdown", syncAudioAfterGesture);
 			window.removeEventListener("keydown", syncAudioAfterGesture);
 			window.removeEventListener("touchstart", syncAudioAfterGesture);
@@ -81,3 +60,4 @@ export default function BackgroundMusic({ src, muted = true }) {
 
 	return <audio ref={audioRef} src={src} loop autoPlay muted={muted} preload="auto" />;
 }
+

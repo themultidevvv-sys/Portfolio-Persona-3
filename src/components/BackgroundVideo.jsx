@@ -23,61 +23,51 @@ export default function BackgroundVideo({
 
 		video.loop = true;
 		video.playsInline = true;
+		video.setAttribute("playsinline", "true");
+		video.setAttribute("webkit-playsinline", "true");
 		video.defaultMuted = true;
 		video.muted = muted;
 		video.playbackRate = playbackRate;
-		const markReady = () => setIsVideoReady(true);
-		const markLoading = () => setIsVideoReady(false);
 
-		const applyDesiredMute = () => {
-			video.muted = muted;
+		const markReady = () => {
+			setIsVideoReady(true);
 		};
 
 		const tryPlay = () => {
-			video.muted = true;
-			video
-				.play()
-				.then(() => {
-					applyDesiredMute();
-				})
-				.catch(() => {
-					// Autoplay can be blocked on some browsers until user interaction.
-				});
-		};
-
-		const ensureLoopingPlayback = () => {
-			if (video.ended) {
-				video.currentTime = 0;
-				tryPlay();
-				return;
-			}
-			if (video.paused && !document.hidden) {
-				tryPlay();
+			video.muted = muted;
+			const playPromise = video.play();
+			if (playPromise !== undefined) {
+				playPromise
+					.then(() => {
+						setIsVideoReady(true);
+					})
+					.catch(() => {
+						// If unmuted autoplay is blocked by browser policy, try playing muted
+						if (!muted) {
+							video.muted = true;
+							video
+								.play()
+								.then(() => setIsVideoReady(true))
+								.catch(() => {});
+						}
+					});
 			}
 		};
 
 		const syncAudioAfterGesture = () => {
-			if (muted) {
-				video.muted = true;
-				return;
-			}
+			video.muted = muted;
 			if (video.paused) {
 				tryPlay();
-				return;
 			}
-			applyDesiredMute();
 		};
 
 		tryPlay();
+
 		video.addEventListener("playing", markReady);
-		video.addEventListener("playing", applyDesiredMute);
-		video.addEventListener("canplay", tryPlay);
-		video.addEventListener("loadeddata", tryPlay);
-		video.addEventListener("waiting", markLoading);
-		video.addEventListener("error", markLoading);
-		video.addEventListener("stalled", markLoading);
-		video.addEventListener("ended", ensureLoopingPlayback);
-		video.addEventListener("pause", markLoading);
+		video.addEventListener("canplay", markReady);
+		video.addEventListener("loadeddata", markReady);
+		video.addEventListener("timeupdate", markReady);
+
 		window.addEventListener("pointerdown", syncAudioAfterGesture);
 		window.addEventListener("keydown", syncAudioAfterGesture);
 		window.addEventListener("touchstart", syncAudioAfterGesture, {
@@ -85,21 +75,18 @@ export default function BackgroundVideo({
 		});
 
 		const onVisibilityChange = () => {
-			if (!document.hidden) ensureLoopingPlayback();
+			if (!document.hidden && video.paused) {
+				tryPlay();
+			}
 		};
 
 		document.addEventListener("visibilitychange", onVisibilityChange);
 
 		return () => {
 			video.removeEventListener("playing", markReady);
-			video.removeEventListener("playing", applyDesiredMute);
-			video.removeEventListener("canplay", tryPlay);
-			video.removeEventListener("loadeddata", tryPlay);
-			video.removeEventListener("waiting", markLoading);
-			video.removeEventListener("error", markLoading);
-			video.removeEventListener("stalled", markLoading);
-			video.removeEventListener("ended", ensureLoopingPlayback);
-			video.removeEventListener("pause", markLoading);
+			video.removeEventListener("canplay", markReady);
+			video.removeEventListener("loadeddata", markReady);
+			video.removeEventListener("timeupdate", markReady);
 			window.removeEventListener("pointerdown", syncAudioAfterGesture);
 			window.removeEventListener("keydown", syncAudioAfterGesture);
 			window.removeEventListener("touchstart", syncAudioAfterGesture);
@@ -126,7 +113,7 @@ export default function BackgroundVideo({
 					height: "100%",
 					objectFit: "cover",
 					opacity: isVideoReady ? 0 : 1,
-					transition: "opacity 300ms ease",
+					transition: "opacity 400ms ease",
 				}}
 			/>
 			<video
@@ -136,16 +123,18 @@ export default function BackgroundVideo({
 				loop
 				muted={muted}
 				playsInline
+				webkit-playsinline="true"
 				preload="auto"
 				poster={placeholderSrc}
 				className={className}
 				style={{
 					pointerEvents: "none",
 					opacity: isVideoReady ? 1 : 0,
-					transition: "opacity 300ms ease",
+					transition: "opacity 400ms ease",
 					...style,
 				}}
 			/>
 		</div>
 	);
 }
+

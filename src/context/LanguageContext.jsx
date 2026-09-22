@@ -21,15 +21,15 @@ const TRANSLATIONS = {
 			openGithub: "Open GitHub",
 			openSocialHub: "Open Social Hub",
 			goBack: "Go back",
-			tagline: "Elias Taveras, Game Designer Junior",
+			tagline: "Elias Taveras, Junior Unity Game Developer & Game Designer",
 			aboutText:
-				"Currently I'm studing Programming in the Higher School of Computer Science, Instituto Tecnico Salesiano (ITESA). I have some experience working in the game development and the windows form development.",
+				"Currently studying Programming at the Higher School of Computer Science, Instituto Técnico Salesiano (ITESA). I specialize in game development using Unity Engine, C#, and C++, creating gameplay mechanics, real-time UI systems, and interactive experiences.",
 			quickFactsTitle: "Quick Facts",
 			quickFacts: [
-				"Currently I'm doing an internship at Entytec, that is a local Enterprise in my country .",
-				"I'm learning about how to create modern website with API's KEY",
-				"Know how to create apps with react",
-				"Interested in realtime apps, tools, and graphics experiments",
+				"Specialized in game development using Unity Engine with C# for core gameplay logic and interactive systems.",
+				"Experience in game mechanics programming, real-time UI design, and game architecture (OOAD).",
+				"Proficient in C++ for systems programming, data structures, and performance-critical algorithms.",
+				"Passionate about game physics, gameplay loop design, and developing engaging 2D/3D video games.",
 			],
 			linksTitle: "Links",
 			backToMenu: "Back to Menu",
@@ -39,14 +39,14 @@ const TRANSLATIONS = {
 		resume: {
 			navTitle: "Resume",
 			skillsTitle: "Skills",
-			skillsSubtitle: "Technical And Creative Stack",
-			projectsTitle: "Project In Vercel",
+			skillsSubtitle: "Game Development & Technical Stack",
+			projectsTitle: "Projects & Demos",
 			projectsSubtitle: "Open Project Links",
 			detailsTitle: "Details",
 			open: "OPEN",
 			openLink: "Open Link",
 			helperProjects: "Select a project row and press Enter to open the link.",
-			helperSkills: "Skills list comes from the original portfolio dataset.",
+			helperSkills: "Skills list highlights primary game development tools & languages.",
 			skillMeta: {
 				"Web Technologies": "Web Technologies",
 				"Tools & Technologies": "Tools & Technologies",
@@ -56,33 +56,33 @@ const TRANSLATIONS = {
 				"Dev Tools": "Dev Tools",
 			},
 			skillDetails: {
-				React:
-					"Builds responsive frontends with component architecture, reusable UI patterns, and state-driven interactions.",
-				JavaScript:
-					"Uses modern ES features for app logic, event handling, and browser-side architecture.",
-				TypeScript:
-					"Applies type-safe interfaces and models to improve maintainability and reduce runtime bugs.",
-				"CSS / Tailwind":
-					"Builds layered UI styling systems with utility-first speed and custom visual refinements.",
-				HTML: "Creates semantic, accessible document structure with strong content hierarchy.",
-				"Git / GitHub":
-					"Manages version control, branching workflows, and collaboration-ready repositories.",
-				Linux:
-					"Comfortable with shell tooling, system navigation, and developer workflows in Linux environments.",
-				PostgreSQL:
-					"Designs and manages relational databases with structured queries, migrations, and data integrity.",
 				Unity:
-					"Develops interactive games and experiences using the Unity engine with C# scripting.",
+					"Develops 2D/3D interactive games, gameplay mechanics, and UI systems using the Unity engine with C# scripting.",
 				"C#":
-					"Writes object-oriented applications and game logic with strong typing and .NET ecosystem tools.",
+					"Writes object-oriented gameplay logic, state machines, and system architecture for Unity games and .NET applications.",
 				"C++":
-					"Applies low-level programming for performance-critical applications, game engines, and systems development.",
+					"Applies low-level programming for performance-critical systems, custom data structures, and game algorithms.",
+				React:
+					"Builds responsive frontends and web-based portfolio components using component-driven architecture.",
+				JavaScript:
+					"Uses modern ES features for interactive Web apps and browser-side scripting.",
+				TypeScript:
+					"Applies type-safe interfaces and models to improve maintainability and software structure.",
+				"CSS / Tailwind":
+					"Builds stylized UI systems with custom visual designs and responsive layouts.",
+				HTML: "Creates structured, accessible document markup for web interfaces.",
+				"Git / GitHub":
+					"Manages version control, repository branching workflows, and project releases.",
+				Linux:
+					"Comfortable with terminal commands, system navigation, and developer environments in Linux.",
+				PostgreSQL:
+					"Designs and manages relational databases with structured queries and data integrity.",
 				"Microsoft SQL Server":
-					"Manages relational databases with enterprise-level tools, query optimization, and secure data storage.",
+					"Manages relational databases with enterprise query optimization and secure storage.",
 				"Visual Studio Code":
-					"A popular, lightweight code editor used for general web development, scripting, and customization.",
+					"Popular lightweight editor used for general scripting, web integration, and configuration.",
 				"Visual Studio":
-					"An IDE optimized for C# and C++ game design, Windows Forms engineering, and compiling native code.",
+					"Primary IDE optimized for C# and C++ Unity game development, debugging, and native compiling.",
 			},
 		},
 		// Socials
@@ -109,7 +109,7 @@ const TRANSLATIONS = {
 					"A music player with a retro design, inspired by the classic jukebox aesthetic.",
 				checkGithub: "Check My GitHub",
 				checkGithubDesc:
-					"For more projects, visit my GitHub profile where I regularly update my repositories.",
+					"For more game development projects and repositories, visit my GitHub profile.",
 			},
 			footer: {
 				selectCategory: "SELECT CATEGORY OR ITEM",
@@ -143,15 +143,15 @@ const TRANSLATIONS = {
 			openGithub: "Abrir GitHub",
 			openSocialHub: "Abrir Redes",
 			goBack: "Volver",
-			tagline: "Elias Taveras, Diseñador de Videojuegos Junior",
+			tagline: "Elias Taveras, Desarrollador de Videojuegos Unity y Diseñador Junior",
 			aboutText:
-				"Actualmente estoy estudiando Programación en la Escuela Superior de Informática del Instituto Técnico Salesiano (ITESA). Tengo experiencia trabajando en desarrollo de videojuegos y desarrollo con Windows Forms.",
+				"Actualmente estudio Programación en la Escuela Superior de Informática del Instituto Técnico Salesiano (ITESA). Me especializo en el desarrollo de videojuegos utilizando el motor Unity, C# y C++, creando mecánicas de juego, sistemas de UI en tiempo real y experiencias interactivas.",
 			quickFactsTitle: "Datos Rápidos",
 			quickFacts: [
-				"Actualmente realizo una pasantía en Entytec, una empresa local de mi país.",
-				"Estoy aprendiendo a crear sitios web modernos integrando claves de API.",
-				"Sé cómo crear aplicaciones con React.",
-				"Interesado en aplicaciones en tiempo real, herramientas y experimentos gráficos.",
+				"Especializado en el desarrollo de videojuegos con el motor Unity utilizando C# para la lógica principal de juego y sistemas interactivos.",
+				"Experiencia en programación de mecánicas de juego, diseño de interfaz (UI) en tiempo real y arquitectura de juegos (OOAD).",
+				"Dominio de C++ para programación de sistemas, estructuras de datos y algoritmos de alto rendimiento.",
+				"Apasionado por la física de juegos, el diseño del gameplay loop y la creación de videojuegos 2D/3D atractivos.",
 			],
 			linksTitle: "Enlaces",
 			backToMenu: "Volver al Menú",
@@ -161,8 +161,8 @@ const TRANSLATIONS = {
 		resume: {
 			navTitle: "Currículum",
 			skillsTitle: "Habilidades",
-			skillsSubtitle: "Pila Técnica y Creativa",
-			projectsTitle: "Proyectos en Vercel",
+			skillsSubtitle: "Desarrollo de Videojuegos y Pila Técnica",
+			projectsTitle: "Proyectos y Demos",
 			projectsSubtitle: "Enlaces a Proyectos",
 			detailsTitle: "Detalles",
 			open: "ABRIR",
@@ -170,7 +170,7 @@ const TRANSLATIONS = {
 			helperProjects:
 				"Selecciona una fila de proyecto y presiona Enter para abrir el enlace.",
 			helperSkills:
-				"La lista de habilidades proviene del conjunto de datos original del portafolio.",
+				"La lista de habilidades destaca las herramientas y lenguajes principales de desarrollo de videojuegos.",
 			skillMeta: {
 				"Web Technologies": "Tecnologías Web",
 				"Tools & Technologies": "Herramientas y Tecnologías",
@@ -180,33 +180,33 @@ const TRANSLATIONS = {
 				"Dev Tools": "Herramientas de Desarrollo",
 			},
 			skillDetails: {
-				React:
-					"Construye frontends adaptativos con arquitectura de componentes, patrones de UI reutilizables e interacciones basadas en estado.",
-				JavaScript:
-					"Utiliza características modernas de ES para la lógica de la aplicación, manejo de eventos y arquitectura en el navegador.",
-				TypeScript:
-					"Aplica interfaces y modelos con tipos seguros para mejorar el mantenimiento y reducir errores en tiempo de ejecución.",
-				"CSS / Tailwind":
-					"Crea sistemas de diseño visual por capas con velocidad basada en utilidades y acabados visuales personalizados.",
-				HTML: "Crea estructuras de documentos semánticas y accesibles con una sólida jerarquía de contenido.",
-				"Git / GitHub":
-					"Gestiona el control de versiones, flujos de ramificación y repositorios listos para la colaboración.",
-				Linux:
-					"Dominio de herramientas de terminal, navegación por el sistema y flujos de trabajo en entornos Linux.",
-				PostgreSQL:
-					"Diseña y gestiona bases de datos relacionales con consultas estructuradas, migraciones e integridad de datos.",
 				Unity:
-					"Desarrolla videojuegos y experiencias interactivas utilizando el motor Unity y programación en C#.",
+					"Desarrolla videojuegos 2D/3D, mecánicas de juego y sistemas de UI interactivos utilizando el motor Unity con C#.",
 				"C#":
-					"Escribe aplicaciones orientadas a objetos y lógica de juegos con tipado fuerte y herramientas del ecosistema .NET.",
+					"Escribe lógica de juego orientada a objetos, máquinas de estado y arquitectura de sistemas para Unity y .NET.",
 				"C++":
-					"Aplica programación de bajo nivel para aplicaciones de alto rendimiento, motores de juego y desarrollo de sistemas.",
+					"Aplica programación de bajo nivel para sistemas de alto rendimiento, estructuras de datos y algoritmos de juegos.",
+				React:
+					"Construye portafolios e interfaces web interactivas con arquitectura basada en componentes.",
+				JavaScript:
+					"Utiliza características modernas de ES para aplicaciones web interactivas y scripting.",
+				TypeScript:
+					"Aplica interfaces y modelos con tipos seguros para mejorar el mantenimiento del código.",
+				"CSS / Tailwind":
+					"Crea sistemas de diseño visual estilizados y maquetación adaptativa.",
+				HTML: "Crea estructuras de documentos semánticas para interfaces web.",
+				"Git / GitHub":
+					"Gestiona el control de versiones, flujo de ramas y repositorios de proyectos.",
+				Linux:
+					"Dominio de terminal, navegación del sistema y entornos de desarrollo en Linux.",
+				PostgreSQL:
+					"Diseña y gestiona bases de datos relacionales con consultas estructuradas e integridad de datos.",
 				"Microsoft SQL Server":
-					"Gestiona bases de datos relacionales con herramientas empresariales, optimización de consultas y almacenamiento seguro.",
+					"Gestiona bases de datos relacionales con optimización de consultas y almacenamiento seguro.",
 				"Visual Studio Code":
-					"Un editor de código ligero y popular utilizado para desarrollo web general, scripting y personalización.",
+					"Editor ligero utilizado para scripting general, configuración e integración web.",
 				"Visual Studio":
-					"Un IDE optimizado para el diseño de juegos en C# y C++, ingeniería con Windows Forms y compilación de código nativo.",
+					"IDE principal optimizado para el desarrollo de videojuegos en Unity con C# y C++, depuración y compilación nativa.",
 			},
 		},
 		// Socials
@@ -233,7 +233,7 @@ const TRANSLATIONS = {
 					"Un reproductor de música con diseño retro, inspirado en la estética clásica de la jukebox/vellonera.",
 				checkGithub: "Visita Mi GitHub",
 				checkGithubDesc:
-					"Para ver más proyectos, visita mi perfil de GitHub donde actualizo frecuentemente mis repositorios.",
+					"Para ver más proyectos de desarrollo de videojuegos y repositorios, visita mi perfil de GitHub.",
 			},
 			footer: {
 				selectCategory: "SELECCIONAR CATEGORÍA O ELEMENTO",

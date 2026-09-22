@@ -1,9 +1,39 @@
 export const PROFILE = {
 	name: "TheMultiDevvv",
-	tagline: "Elias Taveras, Game Designer Junior",
+	tagline: "Elias Taveras, Junior Unity Game Developer & Game Designer",
 };
 
 export const SKILLS_DATA = [
+	{
+		title: "Unity",
+		description: "Game Development",
+		url: "https://unity.com/",
+	},
+	{
+		title: "C#",
+		description: "Programming Language",
+		url: "https://learn.microsoft.com/en-us/dotnet/csharp/",
+	},
+	{
+		title: "C++",
+		description: "Programming Language",
+		url: "https://isocpp.org/",
+	},
+	{
+		title: "Visual Studio",
+		description: "Dev Tools",
+		url: "https://visualstudio.microsoft.com/",
+	},
+	{
+		title: "Git / GitHub",
+		description: "Tools & Technologies",
+		url: "https://github.com/",
+	},
+	{
+		title: "Visual Studio Code",
+		description: "Dev Tools",
+		url: "https://code.visualstudio.com/",
+	},
 	{
 		title: "React",
 		description: "Web Technologies",
@@ -30,11 +60,6 @@ export const SKILLS_DATA = [
 		url: "https://developer.mozilla.org/en-US/docs/Web/HTML",
 	},
 	{
-		title: "Git / GitHub",
-		description: "Tools & Technologies",
-		url: "https://github.com/",
-	},
-	{
 		title: "Linux",
 		description: "Tools & Technologies",
 		url: "https://www.linux.org/",
@@ -45,34 +70,9 @@ export const SKILLS_DATA = [
 		url: "https://www.postgresql.org/",
 	},
 	{
-		title: "Unity",
-		description: "Game Development",
-		url: "https://unity.com/",
-	},
-	{
-		title: "C#",
-		description: "Programming Language",
-		url: "https://learn.microsoft.com/en-us/dotnet/csharp/",
-	},
-	{
-		title: "C++",
-		description: "Programming Language",
-		url: "https://isocpp.org/",
-	},
-	{
 		title: "Microsoft SQL Server",
 		description: "Databases",
 		url: "https://www.microsoft.com/en-us/sql-server/",
-	},
-	{
-		title: "Visual Studio Code",
-		description: "Dev Tools",
-		url: "https://code.visualstudio.com/",
-	},
-	{
-		title: "Visual Studio",
-		description: "Dev Tools",
-		url: "https://visualstudio.microsoft.com/",
 	},
 ];
 
@@ -88,7 +88,7 @@ export const PROJECTS_DATA = [
 	{
 		title: "Check My GitHub",
 		description:
-			"For more projects, visit my GitHub profile where I regularly update my repositories.",
+			"For more game development projects and repositories, visit my GitHub profile.",
 		imageUrl: "/Images/Github.webp",
 		liveUrl: "https://github.com/themultidevvv-sys",
 	},
@@ -112,3 +112,4 @@ export const SOCIAL_LINKS = [
 	{ label: "Instagram", href: "https://www.instagram.com/rymt.hedev" },
 	{ label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=themultidevvv@gmail.com" },
 ];
+
