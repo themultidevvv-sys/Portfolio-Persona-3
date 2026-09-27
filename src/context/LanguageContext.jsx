@@ -42,6 +42,8 @@ const TRANSLATIONS = {
 			skillsSubtitle: "Game Development & Technical Stack",
 			projectsTitle: "Projects & Demos",
 			projectsSubtitle: "Open Project Links",
+			collabsTitle: "Collabs/Co-Development",
+			collabsSubtitle: "Project that i worked in or participated",
 			detailsTitle: "Details",
 			open: "OPEN",
 			openLink: "Open Link",
@@ -83,6 +85,10 @@ const TRANSLATIONS = {
 					"Popular lightweight editor used for general scripting, web integration, and configuration.",
 				"Visual Studio":
 					"Primary IDE optimized for C# and C++ Unity game development, debugging, and native compiling.",
+			},
+			collabsDetails: {
+				thisisnteven:
+					"This Isn't Even My Final Form is a small idle clicker about collecting video game consoles, accessories, peripherals, and other bits of gaming hardware. Start with a simple collection and gradually build it into increasingly ridiculous rigs. Collect hardware, generate resources, unlock new parts, and keep adding more things until it reaches its final form, or not.",
 			},
 		},
 		// Socials
@@ -164,6 +170,8 @@ const TRANSLATIONS = {
 			skillsSubtitle: "Desarrollo de Videojuegos y Pila Técnica",
 			projectsTitle: "Proyectos y Demos",
 			projectsSubtitle: "Enlaces a Proyectos",
+			collabsTitle: "Colaboraciones/Co-Desarrollo",
+			collabsSubtitle: "Poryectos en los que he colaborado o participado",
 			detailsTitle: "Detalles",
 			open: "ABRIR",
 			openLink: "Abrir Enlace",
@@ -207,6 +215,10 @@ const TRANSLATIONS = {
 					"Editor ligero utilizado para scripting general, configuración e integración web.",
 				"Visual Studio":
 					"IDE principal optimizado para el desarrollo de videojuegos en Unity con C# y C++, depuración y compilación nativa.",
+			},
+			collabsDetails: {
+				thisisnteven:
+					"This Isn't Even My Final Form es un pequeño juego idle clicker sobre coleccionar consolas de videojuegos, accesorios, periféricos y otros componentes de hardware gaming. Comienza con una colección simple y constrúyela gradualmente en configuraciones cada vez más disparatadas. Colecciona hardware, genera recursos, desbloquea nuevas partes y sigue añadiendo más cosas hasta alcanzar su forma final... o no.",
 			},
 		},
 		// Socials

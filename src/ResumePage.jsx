@@ -5,6 +5,7 @@ import MobileBackButton from "./components/MobileBackButton";
 import bgVideo from "./assets/Resume.mp4";
 import bgMusic from "./assets/Resume.mp3";
 import {
+  COLLABS_URL,
   PROJECTS_URL,
   SKILLS_DATA,
 } from "./data/portfolioData";
@@ -51,6 +52,19 @@ export default function ResumePage({
     }));
   }, [t, language]);
 
+  const collabsRows = useMemo(() => {
+    return COLLABS_URL.map((collab) => ({
+      title: collab.title,
+      author: collab.author,
+      meta: t("resume.openLink"),
+      description:
+        language === "es" && collab.title === "This Isn't Even My Final Form"
+          ? t("resume.collabsDetails.thisisnteven")
+          : collab.description,
+      href: collab.liveUrl,
+    }));
+  }, [t, language]);
+
   const sections = useMemo(() => {
     return [
       {
@@ -65,8 +79,14 @@ export default function ResumePage({
         subtitle: t("resume.projectsSubtitle"),
         rows: projectRows,
       },
+      {
+        id: "collabs",
+        title: t("resume.collabsTitle"),
+        subtitle: t("resume.collabsSubtitle"),
+        rows: collabsRows,
+      },
     ];
-  }, [t, skillRows, projectRows]);
+  }, [t, skillRows, projectRows, collabsRows]);
 
   const section = sections[activeSection] || sections[0];
   const rows = section.rows;
@@ -335,6 +355,23 @@ export default function ResumePage({
           white-space: normal;
           word-break: break-word;
           overflow-wrap: anywhere;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .resume-row-author {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 20px;
+          letter-spacing: 1px;
+          color: #ff5e88;
+          background: rgba(255, 94, 136, 0.15);
+          border: 1px solid rgba(255, 94, 136, 0.4);
+          padding: 2px 8px;
+          border-radius: 4px;
+          text-transform: uppercase;
+          white-space: nowrap;
         }
 
         .resume-row-meta {
@@ -592,7 +629,12 @@ export default function ResumePage({
                   }
                 }}>
                 <div className="resume-row-main">
-                  <div className="resume-row-title">{row.title}</div>
+                  <div className="resume-row-title">
+                    <span>{row.title}</span>
+                    {row.author && (
+                      <span className="resume-row-author">{row.author}</span>
+                    )}
+                  </div>
                   <div className="resume-row-meta">{row.meta}</div>
                 </div>
                 {row.href ? <span className="resume-row-cta">{t("resume.open")}</span> : null}

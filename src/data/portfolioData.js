@@ -105,6 +105,15 @@ export const PROJECTS_URL = [
 	}
 ];
 
+export const COLLABS_URL = [
+	{
+		title: "This Isn't Even My Final Form",
+		author: "Entytec-Collab",
+		description:
+			"A small idle clicker about collecting video game consoles, accessories, peripherals, and other bits of gaming hardware. Start with a simple collection and gradually build it into increasingly ridiculous rigs. Collect hardware, generate resources, unlock new parts, and keep adding more things until it reaches its final form, or not.",
+		liveUrl: "https://danielcf2996.itch.io/thisisnteven",
+	}
+];
 
 export const SOCIAL_LINKS = [
 	{ label: "GitHub", href: "https://github.com/themultidevvv-sys" },
@@ -112,4 +121,5 @@ export const SOCIAL_LINKS = [
 	{ label: "Instagram", href: "https://www.instagram.com/rymt.hedev" },
 	{ label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=themultidevvv@gmail.com" },
 ];
+
 
