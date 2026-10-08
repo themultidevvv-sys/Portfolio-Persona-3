@@ -48,7 +48,6 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
 
       if (
         e.key === "Escape" ||
-        e.key === "Backspace" ||
         key === "a" ||
         key === "q"
       ) {
@@ -471,7 +470,7 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
               <span>{t("aboutMe.openSocialHub")}</span>
             </div>
             <div className="about-control" role="listitem">
-              <span className="about-control-key">A/Q/ESC</span>
+              <span className="about-control-key">A/Q/ESC/TAB</span>
               <span>{t("aboutMe.goBack")}</span>
             </div>
           </div>

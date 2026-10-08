@@ -142,7 +142,7 @@ export default function Socials({ mediaMuted = true, sfxMuted = true }) {
       const barCount = ITEMS[active].bars;
 
       if (showContact) {
-        if (e.key === "Escape" || e.key === "Backspace") {
+        if (e.key === "Escape") {
           setSent(false);
           setSending(false);
           setShowContact(false);
@@ -203,9 +203,9 @@ export default function Socials({ mediaMuted = true, sfxMuted = true }) {
       if (
         ((e.key === "ArrowLeft" || key === "a" || key === "q") &&
           focus === "left") ||
-        e.key === "Escape" ||
-        e.key === "Backspace"
+        e.key === "Escape"
       ) {
+        e.preventDefault();
         playBack();
         goBack();
       }
@@ -1531,10 +1531,23 @@ export default function Socials({ mediaMuted = true, sfxMuted = true }) {
                       onSubmit={(e) => {
                         e.preventDefault();
                         const form = e.currentTarget;
+                        const nameVal = form.name.value.trim();
+                        const emailVal = form.email.value.trim();
+                        const messageVal = form.message.value.trim();
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                        if (!nameVal || !emailVal || !messageVal || !emailRegex.test(emailVal)) {
+                          if (typeof form.reportValidity === "function") {
+                            form.reportValidity();
+                          }
+                          playInvalid();
+                          return;
+                        }
+
                         const templateParams = {
-                          name: form.name.value,
-                          from_email: form.email.value,
-                          message: form.message.value,
+                          name: nameVal,
+                          from_email: emailVal,
+                          message: messageVal,
                           to_email: emailAddress,
                         };
                         setSending(true);
@@ -1554,6 +1567,30 @@ export default function Socials({ mediaMuted = true, sfxMuted = true }) {
                             console.error(error);
                             setSending(false);
                           });
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault();
+                          const form = e.currentTarget;
+                          const nameVal = form.name.value.trim();
+                          const emailVal = form.email.value.trim();
+                          const messageVal = form.message.value.trim();
+                          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                          if (!nameVal || !emailVal || !messageVal || !emailRegex.test(emailVal)) {
+                            if (typeof form.reportValidity === "function") {
+                              form.reportValidity();
+                            }
+                            playInvalid();
+                            return;
+                          }
+
+                          if (typeof form.requestSubmit === "function") {
+                            form.requestSubmit();
+                          } else {
+                            form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+                          }
+                        }
                       }}>
                       <input
                         className="sc-modal-input"
