@@ -21,15 +21,30 @@ const TRANSLATIONS = {
 			openGithub: "Open GitHub",
 			openSocialHub: "Open Social Hub",
 			goBack: "Go back",
-			tagline: "Elias Taveras, Junior Unity Game Developer & Game Designer",
+			tagline: "Elias Taveras, Junior Backend & Web Developer | C# / .NET",
 			aboutText:
-				"Currently studying Programming at the Higher School of Computer Science, Instituto Técnico Salesiano (ITESA). I specialize in game development using Unity Engine, C#, and C++, creating gameplay mechanics, real-time UI systems, and interactive experiences.",
+				"I am a junior developer focused on backend and web development. I design the logic behind systems: business rules, data, transactions, user roles and activity history, with C# and .NET as my main stack and Node.js, React and relational databases (SQL Server, PostgreSQL, MySQL) as supporting tools. I also work on ethical hacking fundamentals, from network scanning to man-in-the-middle attacks, and I keep game development as a strong strength: since 2022 I have built Unity prototypes in C# with combat, dodging and isometric gameplay that help me think in systems, states and rules.",
 			quickFactsTitle: "Quick Facts",
 			quickFacts: [
-				"Specialized in game development using Unity Engine with C# for core gameplay logic and interactive systems.",
-				"Experience in game mechanics programming, real-time UI design, and game architecture (OOAD).",
-				"Proficient in C++ for systems programming, data structures, and performance-critical algorithms.",
-				"Passionate about game physics, gameplay loop design, and developing engaging 2D/3D video games.",
+				"Backend and web focus: C# / .NET business logic, CRUD operations, role-based access and transaction history.",
+				"Web stack: Node.js, React, JavaScript, HTML/CSS, Tailwind CSS and relational databases such as SQL Server, PostgreSQL and MySQL.",
+				"Ethical hacking basics: network scanning, man-in-the-middle attacks and CTF practice under the alias RymonElaies.",
+				"Strong game development background: Unity and C# prototypes with isometric views, combat systems and dodge mechanics since 2022.",
+			],
+			focusTitle: "Focus Areas",
+			focus: [
+				{
+					title: "Web & Backend",
+					text: "System logic, APIs, relational data and role-based access.",
+				},
+				{
+					title: "Cybersecurity",
+					text: "Ethical hacking fundamentals and CTF practice.",
+				},
+				{
+					title: "Game Development",
+					text: "Unity + C# systems, combat and dodge mechanics.",
+				},
 			],
 			linksTitle: "Links",
 			backToMenu: "Back to Menu",
@@ -39,16 +54,23 @@ const TRANSLATIONS = {
 		resume: {
 			navTitle: "Resume",
 			skillsTitle: "Skills",
-			skillsSubtitle: "Game Development & Technical Stack",
+			skillsSubtitle: "Web, Backend & Technical Stack",
 			projectsTitle: "Projects & Demos",
 			projectsSubtitle: "Open Project Links",
 			collabsTitle: "Collabs/Co-Development",
 			collabsSubtitle: "Project that i worked in or participated",
+			recordsTitle: "Events / Records",
+			recordsSubtitle: "Public participations in chronological order",
+			statsTitle: "Statistics / Stats",
+			statsSubtitle: "Programming skills ranked from 1 to 10",
+			recordsMeta: "Public participation",
 			detailsTitle: "Details",
 			open: "OPEN",
 			openLink: "Open Link",
 			helperProjects: "Select a project row and press Enter to open the link.",
-			helperSkills: "Skills list highlights primary game development tools & languages.",
+			helperSkills: "Skills list highlights web, backend and game development tools.",
+			helperRecords: "Select a record and press Enter to open its link.",
+			helperStats: "Use Left / Right to inspect each skill bar.",
 			skillMeta: {
 				"Web Technologies": "Web Technologies",
 				"Tools & Technologies": "Tools & Technologies",
@@ -56,6 +78,8 @@ const TRANSLATIONS = {
 				"Game Development": "Game Development",
 				"Programming Language": "Programming Language",
 				"Dev Tools": "Dev Tools",
+				"Backend Framework": "Backend Framework",
+				Runtime: "Runtime",
 			},
 			skillDetails: {
 				Unity:
@@ -64,6 +88,12 @@ const TRANSLATIONS = {
 					"Writes object-oriented gameplay logic, state machines, and system architecture for Unity games and .NET applications.",
 				"C++":
 					"Applies low-level programming for performance-critical systems, custom data structures, and game algorithms.",
+				".NET":
+					"Builds backend services and business logic with C# and .NET, including transactions, user roles and data access.",
+				"Node.js":
+					"Uses Node.js for server-side scripting, APIs and web tooling alongside front-end technologies.",
+				MySQL:
+					"Designs relational schemas and writes SQL queries for structured, consistent data storage.",
 				React:
 					"Builds responsive frontends and web-based portfolio components using component-driven architecture.",
 				JavaScript:
@@ -89,6 +119,27 @@ const TRANSLATIONS = {
 			collabsDetails: {
 				thisisnteven:
 					"This Isn't Even My Final Form is a small idle clicker about collecting video game consoles, accessories, peripherals, and other bits of gaming hardware. Start with a simple collection and gradually build it into increasingly ridiculous rigs. Collect hardware, generate resources, unlock new parts, and keep adding more things until it reaches its final form, or not.",
+			},
+			recordsDetails: {
+				ctfMagic:
+					"Participation in a Capture The Flag event on the CTF Magic platform under the username RymonElaies, applying ethical hacking fundamentals such as network scanning and man-in-the-middle analysis.",
+			},
+			statsNames: {
+				videoGames: "Video Games",
+				web: "Web Development",
+				cybersecurity: "Cybersecurity",
+			},
+			statsRanks: {
+				1: "Novice",
+				2: "Basic",
+				3: "Apprentice",
+				4: "Intermediate",
+				5: "Proficient",
+				6: "Advanced",
+				7: "Expert",
+				8: "Master",
+				9: "Veteran",
+				10: "Legendary",
 			},
 		},
 		// Socials
@@ -149,15 +200,30 @@ const TRANSLATIONS = {
 			openGithub: "Abrir GitHub",
 			openSocialHub: "Abrir Redes",
 			goBack: "Volver",
-			tagline: "Elias Taveras, Desarrollador de Videojuegos Unity y Diseñador Junior",
+			tagline: "Elias Taveras, Desarrollador Junior Backend y Web | C# / .NET",
 			aboutText:
-				"Actualmente estudio Programación en la Escuela Superior de Informática del Instituto Técnico Salesiano (ITESA). Me especializo en el desarrollo de videojuegos utilizando el motor Unity, C# y C++, creando mecánicas de juego, sistemas de UI en tiempo real y experiencias interactivas.",
+				"Soy un desarrollador junior enfocado en el backend y el desarrollo web. Diseño la lógica que sostiene a los sistemas: reglas de negocio, datos, transacciones, roles de usuario e historial de movimientos, con C# y .NET como stack principal y Node.js, React y bases de datos relacionales (SQL Server, PostgreSQL y MySQL) como herramientas de apoyo. También trabajo en conceptos básicos de hacking ético, desde el escaneo de redes hasta los ataques man-in-the-middle, y mantengo el desarrollo de videojuegos como una fortaleza: desde 2022 he creado prototipos en Unity con C# con combate, esquive y vista isométrica que me ayudan a pensar en sistemas, estados y reglas.",
 			quickFactsTitle: "Datos Rápidos",
 			quickFacts: [
-				"Especializado en el desarrollo de videojuegos con el motor Unity utilizando C# para la lógica principal de juego y sistemas interactivos.",
-				"Experiencia en programación de mecánicas de juego, diseño de interfaz (UI) en tiempo real y arquitectura de juegos (OOAD).",
-				"Dominio de C++ para programación de sistemas, estructuras de datos y algoritmos de alto rendimiento.",
-				"Apasionado por la física de juegos, el diseño del gameplay loop y la creación de videojuegos 2D/3D atractivos.",
+				"Enfoque backend y web: lógica de negocio en C# / .NET, operaciones CRUD, control de acceso por roles e historial de transacciones.",
+				"Stack web: Node.js, React, JavaScript, HTML/CSS, Tailwind CSS y bases de datos relacionales como SQL Server, PostgreSQL y MySQL.",
+				"Bases de hacking ético: escaneo de redes, ataques man-in-the-middle y práctica en CTF con el alias RymonElaies.",
+				"Sólida experiencia en videojuegos: prototipos en Unity con C#, vista isométrica, combate y mecánicas de esquive desde 2022.",
+			],
+			focusTitle: "Áreas de Enfoque",
+			focus: [
+				{
+					title: "Web y Backend",
+					text: "Lógica de sistemas, APIs, datos relacionales y acceso por roles.",
+				},
+				{
+					title: "Ciberseguridad",
+					text: "Bases de hacking ético y práctica en CTF.",
+				},
+				{
+					title: "Videojuegos",
+					text: "Sistemas en Unity + C#, combate y mecánicas de esquive.",
+				},
 			],
 			linksTitle: "Enlaces",
 			backToMenu: "Volver al Menú",
@@ -167,18 +233,26 @@ const TRANSLATIONS = {
 		resume: {
 			navTitle: "Currículum",
 			skillsTitle: "Habilidades",
-			skillsSubtitle: "Desarrollo de Videojuegos y Pila Técnica",
+			skillsSubtitle: "Web, Backend y Pila Técnica",
 			projectsTitle: "Proyectos y Demos",
 			projectsSubtitle: "Enlaces a Proyectos",
 			collabsTitle: "Colaboraciones/Co-Desarrollo",
-			collabsSubtitle: "Poryectos en los que he colaborado o participado",
+			collabsSubtitle: "Proyectos en los que he colaborado o participado",
+			recordsTitle: "Eventos / Records",
+			recordsSubtitle: "Participaciones públicas en orden cronológico",
+			statsTitle: "Estadísticas / Stats",
+			statsSubtitle: "Habilidades de programación del 1 al 10",
+			recordsMeta: "Participación pública",
 			detailsTitle: "Detalles",
 			open: "ABRIR",
 			openLink: "Abrir Enlace",
 			helperProjects:
 				"Selecciona una fila de proyecto y presiona Enter para abrir el enlace.",
 			helperSkills:
-				"La lista de habilidades destaca las herramientas y lenguajes principales de desarrollo de videojuegos.",
+				"La lista de habilidades destaca herramientas de web, backend y desarrollo de videojuegos.",
+			helperRecords:
+				"Selecciona un record y presiona Enter para abrir su enlace.",
+			helperStats: "Usa Izquierda / Derecha para revisar cada barra de habilidad.",
 			skillMeta: {
 				"Web Technologies": "Tecnologías Web",
 				"Tools & Technologies": "Herramientas y Tecnologías",
@@ -186,6 +260,8 @@ const TRANSLATIONS = {
 				"Game Development": "Desarrollo de Videojuegos",
 				"Programming Language": "Lenguaje de Programación",
 				"Dev Tools": "Herramientas de Desarrollo",
+				"Backend Framework": "Framework Backend",
+				Runtime: "Entorno de Ejecución",
 			},
 			skillDetails: {
 				Unity:
@@ -194,6 +270,12 @@ const TRANSLATIONS = {
 					"Escribe lógica de juego orientada a objetos, máquinas de estado y arquitectura de sistemas para Unity y .NET.",
 				"C++":
 					"Aplica programación de bajo nivel para sistemas de alto rendimiento, estructuras de datos y algoritmos de juegos.",
+				".NET":
+					"Construye servicios backend y lógica de negocio con C# y .NET, incluyendo transacciones, roles de usuario y acceso a datos.",
+				"Node.js":
+					"Utiliza Node.js para scripting del lado del servidor, APIs y herramientas web junto a tecnologías front-end.",
+				MySQL:
+					"Diseña esquemas relacionales y escribe consultas SQL para almacenar datos de forma estructurada y consistente.",
 				React:
 					"Construye portafolios e interfaces web interactivas con arquitectura basada en componentes.",
 				JavaScript:
@@ -219,6 +301,27 @@ const TRANSLATIONS = {
 			collabsDetails: {
 				thisisnteven:
 					"This Isn't Even My Final Form es un pequeño juego idle clicker sobre coleccionar consolas de videojuegos, accesorios, periféricos y otros componentes de hardware gaming. Comienza con una colección simple y constrúyela gradualmente en configuraciones cada vez más disparatadas. Colecciona hardware, genera recursos, desbloquea nuevas partes y sigue añadiendo más cosas hasta alcanzar su forma final... o no.",
+			},
+			recordsDetails: {
+				ctfMagic:
+					"Participación en un evento Capture The Flag en la plataforma CTF Magic con el usuario RymonElaies, aplicando conceptos básicos de hacking ético como escaneo de redes y análisis man-in-the-middle.",
+			},
+			statsNames: {
+				videoGames: "Videojuegos",
+				web: "Web",
+				cybersecurity: "Ciberseguridad",
+			},
+			statsRanks: {
+				1: "Novato",
+				2: "Básico",
+				3: "Aprendiz",
+				4: "Intermedio",
+				5: "Competente",
+				6: "Avanzado",
+				7: "Experto",
+				8: "Maestro",
+				9: "Veterano",
+				10: "Legendario",
 			},
 		},
 		// Socials

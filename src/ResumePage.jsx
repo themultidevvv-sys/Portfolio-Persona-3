@@ -7,7 +7,9 @@ import bgMusic from "./assets/Resume.mp3";
 import {
   COLLABS_URL,
   PROJECTS_URL,
+  RECORDS_DATA,
   SKILLS_DATA,
+  STATS_DATA,
 } from "./data/portfolioData";
 import { usePersonaSfx } from "./lib/usePersonaSfx";
 import { useSafeBackNavigation } from "./lib/useSafeBackNavigation";
@@ -38,7 +40,7 @@ export default function ResumePage({
         `${skill.title} applied in practical ${skill.description.toLowerCase()} workflows.`,
       href: skill.url,
     }));
-  }, [t, language]);
+  }, [t]);
 
   const projectRows = useMemo(() => {
     return PROJECTS_URL.map((project) => ({
@@ -65,6 +67,30 @@ export default function ResumePage({
     }));
   }, [t, language]);
 
+  const recordsRows = useMemo(() => {
+    return RECORDS_DATA.map((record) => ({
+      title: record.title,
+      author: record.author,
+      meta: t("resume.recordsMeta"),
+      description:
+        language === "es" && record.title === "CTF Magic"
+          ? t("resume.recordsDetails.ctfMagic")
+          : record.description,
+      href: record.liveUrl,
+    }));
+  }, [t, language]);
+
+  const statsRows = useMemo(() => {
+    return STATS_DATA.map((stat) => {
+      const value = Math.min(10, Math.max(1, stat.value));
+      return {
+        title: t(`resume.statsNames.${stat.id}`),
+        value,
+        rank: t(`resume.statsRanks.${value}`),
+      };
+    });
+  }, [t]);
+
   const sections = useMemo(() => {
     return [
       {
@@ -72,6 +98,12 @@ export default function ResumePage({
         title: t("resume.skillsTitle"),
         subtitle: t("resume.skillsSubtitle"),
         rows: skillRows,
+      },
+      {
+        id: "stats",
+        title: t("resume.statsTitle"),
+        subtitle: t("resume.statsSubtitle"),
+        rows: statsRows,
       },
       {
         id: "projects",
@@ -85,12 +117,19 @@ export default function ResumePage({
         subtitle: t("resume.collabsSubtitle"),
         rows: collabsRows,
       },
+      {
+        id: "records",
+        title: t("resume.recordsTitle"),
+        subtitle: t("resume.recordsSubtitle"),
+        rows: recordsRows,
+      },
     ];
-  }, [t, skillRows, projectRows, collabsRows]);
+  }, [t, skillRows, projectRows, collabsRows, recordsRows, statsRows]);
 
   const section = sections[activeSection] || sections[0];
   const rows = section.rows;
   const selectedRow = rows[activeRow] ?? rows[0];
+  const isStats = section.id === "stats";
 
   const [lastSection, setLastSection] = useState(activeSection);
   if (lastSection !== activeSection) {
@@ -164,6 +203,9 @@ export default function ResumePage({
     if (section.id === "projects") {
       return t("resume.helperProjects");
     }
+    if (section.id === "records") {
+      return t("resume.helperRecords");
+    }
     return t("resume.helperSkills");
   }, [section.id, t]);
 
@@ -202,12 +244,14 @@ export default function ResumePage({
 
         .resume-nav::-webkit-scrollbar,
         .resume-rows::-webkit-scrollbar,
+        .resume-stats::-webkit-scrollbar,
         .resume-panel::-webkit-scrollbar {
           width: 10px;
         }
 
         .resume-nav::-webkit-scrollbar-thumb,
         .resume-rows::-webkit-scrollbar-thumb,
+        .resume-stats::-webkit-scrollbar-thumb,
         .resume-panel::-webkit-scrollbar-thumb {
           background: rgba(143, 245, 255, 0.72);
           border-radius: 12px;
@@ -423,6 +467,101 @@ export default function ResumePage({
           overflow-wrap: anywhere;
         }
 
+        .resume-stats {
+          margin-top: 14px;
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          background: rgba(5, 13, 57, 0.98);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+          box-shadow: inset 0 0 0 1px rgba(145, 239, 255, 0.18);
+        }
+
+        .resume-stat {
+          border: 0;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+          background: linear-gradient(135deg, rgba(15, 24, 96, 0.75), rgba(10, 16, 70, 0.8));
+          color: #ecfbff;
+          clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+          padding: 16px 18px;
+          display: grid;
+          gap: 12px;
+          box-shadow: inset 0 0 0 1px rgba(140, 239, 255, 0.2);
+          transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .resume-stat:hover {
+          transform: translateX(3px);
+          background: rgba(13, 27, 98, 1);
+        }
+
+        .resume-stat.focused {
+          transform: translateX(6px);
+          background: rgba(28, 53, 156, 1);
+          box-shadow: inset 0 0 0 2px rgba(157, 246, 255, 0.95), 0 0 18px rgba(157, 246, 255, 0.3);
+        }
+
+        .resume-stat-head {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        .resume-stat-name {
+          font-family: 'Anton', sans-serif;
+          font-size: clamp(24px, 2.6vw, 34px);
+          letter-spacing: 0.4px;
+        }
+
+        .resume-stat-level {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          letter-spacing: 1px;
+          color: #8ef5ff;
+          white-space: nowrap;
+        }
+
+        .resume-stat-level strong {
+          font-size: 30px;
+          color: #fff;
+        }
+
+        .resume-stat-rank {
+          margin-left: 8px;
+          color: #ff5e88;
+          text-transform: uppercase;
+        }
+
+        .resume-stat-bar {
+          display: grid;
+          grid-template-columns: repeat(10, minmax(0, 1fr));
+          gap: 5px;
+        }
+
+        .resume-stat-segment {
+          height: 20px;
+          min-width: 0;
+          background: rgba(8, 14, 56, 0.92);
+          border: 1px solid rgba(145, 240, 255, 0.28);
+          clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 100%, 4px 100%);
+        }
+
+        .resume-stat-segment.filled {
+          background: linear-gradient(180deg, #d5fdff, #5fd8ef);
+          border-color: rgba(214, 50, 50, 0.85);
+          box-shadow: 0 0 10px rgba(142, 245, 255, 0.35);
+        }
+
+        .resume-stat-segment.current {
+          background: linear-gradient(180deg, #ff8a8a, #d63232);
+          border-color: rgba(255, 255, 255, 0.85);
+        }
+
         .resume-helper {
           margin-top: 10px;
           font-family: 'Bebas Neue', sans-serif;
@@ -497,6 +636,33 @@ export default function ResumePage({
             max-height: 42vh;
             gap: 8px;
             padding-right: 4px;
+          }
+
+          .resume-stats {
+            margin-top: 10px;
+            padding: 12px;
+            gap: 10px;
+          }
+
+          .resume-stat {
+            padding: 12px;
+            gap: 10px;
+          }
+
+          .resume-stat-name {
+            font-size: 24px;
+          }
+
+          .resume-stat-level {
+            font-size: 18px;
+          }
+
+          .resume-stat-level strong {
+            font-size: 24px;
+          }
+
+          .resume-stat-segment {
+            height: 16px;
           }
 
           .resume-row {
@@ -608,48 +774,91 @@ export default function ResumePage({
             <p className="resume-panel-subtitle">{section.subtitle}</p>
           </header>
 
-          <div className="resume-rows" ref={rowsContainerRef}>
-            {rows.map((row, index) => (
-              <button
-                key={`${section.id}-${row.title}-${index}`}
-                type="button"
-                ref={(el) => {
-                  rowButtonRefs.current[index] = el;
-                }}
-                className={`resume-row${activeRow === index ? " focused" : ""}`}
-                onMouseEnter={() => {
-                  playHover();
-                  setActiveRow(index);
-                }}
-                onClick={() => {
-                  setActiveRow(index);
-                  if (row.href) {
-                    playConfirm();
-                    window.open(row.href, "_blank");
-                  }
-                }}>
-                <div className="resume-row-main">
-                  <div className="resume-row-title">
-                    <span>{row.title}</span>
-                    {row.author && (
-                      <span className="resume-row-author">{row.author}</span>
-                    )}
+          {isStats ? (
+            <div className="resume-stats" ref={rowsContainerRef}>
+              {rows.map((row, index) => (
+                <button
+                  key={`${section.id}-${row.title}-${index}`}
+                  type="button"
+                  ref={(el) => {
+                    rowButtonRefs.current[index] = el;
+                  }}
+                  className={`resume-stat${activeRow === index ? " focused" : ""}`}
+                  onMouseEnter={() => {
+                    playHover();
+                    setActiveRow(index);
+                  }}
+                  onClick={() => setActiveRow(index)}>
+                  <div className="resume-stat-head">
+                    <span className="resume-stat-name">{row.title}</span>
+                    <span className="resume-stat-level">
+                      <strong>{String(row.value).padStart(2, "0")}</strong>/10
+                      <span className="resume-stat-rank">{row.rank}</span>
+                    </span>
                   </div>
-                  <div className="resume-row-meta">{row.meta}</div>
-                </div>
-                {row.href ? <span className="resume-row-cta">{t("resume.open")}</span> : null}
-              </button>
-            ))}
-          </div>
+                  <div
+                    className="resume-stat-bar"
+                    aria-label={`${row.title}: ${row.value}/10`}>
+                    {Array.from({ length: 10 }, (_, segmentIndex) => (
+                      <span
+                        key={segmentIndex}
+                        className={`resume-stat-segment${
+                          segmentIndex < row.value ? " filled" : ""
+                        }${segmentIndex === row.value - 1 ? " current" : ""}`}
+                      />
+                    ))}
+                  </div>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <>
+              <div className="resume-rows" ref={rowsContainerRef}>
+                {rows.map((row, index) => (
+                  <button
+                    key={`${section.id}-${row.title}-${index}`}
+                    type="button"
+                    ref={(el) => {
+                      rowButtonRefs.current[index] = el;
+                    }}
+                    className={`resume-row${activeRow === index ? " focused" : ""}`}
+                    onMouseEnter={() => {
+                      playHover();
+                      setActiveRow(index);
+                    }}
+                    onClick={() => {
+                      setActiveRow(index);
+                      if (row.href) {
+                        playConfirm();
+                        window.open(row.href, "_blank");
+                      }
+                    }}>
+                    <div className="resume-row-main">
+                      <div className="resume-row-title">
+                        <span>{row.title}</span>
+                        {row.author && (
+                          <span className="resume-row-author">{row.author}</span>
+                        )}
+                      </div>
+                      <div className="resume-row-meta">{row.meta}</div>
+                    </div>
+                    {row.href ? (
+                      <span className="resume-row-cta">{t("resume.open")}</span>
+                    ) : null}
+                  </button>
+                ))}
+              </div>
 
-          <article className="resume-detail">
-            <h4 className="resume-detail-title">{t("resume.detailsTitle")}</h4>
-            <p className="resume-detail-text">
-              {selectedRow?.description || "No details available."}
-            </p>
-          </article>
+              <article className="resume-detail">
+                <h4 className="resume-detail-title">{t("resume.detailsTitle")}</h4>
+                <p className="resume-detail-text">
+                  {selectedRow?.description || "No details available."}
+                </p>
+              </article>
+            </>
+          )}
 
-          <p className="resume-helper">{helperText}</p>
+          {!isStats ? <p className="resume-helper">{helperText}</p> : null}
         </section>
       </div>
     </div>

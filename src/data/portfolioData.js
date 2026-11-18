@@ -1,6 +1,6 @@
 export const PROFILE = {
 	name: "TheMultiDevvv",
-	tagline: "Elias Taveras, Junior Unity Game Developer & Game Designer",
+	tagline: "Elias Taveras, Junior Backend & Web Developer | C# / .NET",
 };
 
 export const SKILLS_DATA = [
@@ -33,6 +33,16 @@ export const SKILLS_DATA = [
 		title: "Visual Studio Code",
 		description: "Dev Tools",
 		url: "https://code.visualstudio.com/",
+	},
+	{
+		title: ".NET",
+		description: "Backend Framework",
+		url: "https://dotnet.microsoft.com/",
+	},
+	{
+		title: "Node.js",
+		description: "Runtime",
+		url: "https://nodejs.org/",
 	},
 	{
 		title: "React",
@@ -68,6 +78,11 @@ export const SKILLS_DATA = [
 		title: "PostgreSQL",
 		description: "Databases",
 		url: "https://www.postgresql.org/",
+	},
+	{
+		title: "MySQL",
+		description: "Databases",
+		url: "https://www.mysql.com/",
 	},
 	{
 		title: "Microsoft SQL Server",
@@ -113,6 +128,22 @@ export const COLLABS_URL = [
 			"A small idle clicker about collecting video game consoles, accessories, peripherals, and other bits of gaming hardware. Start with a simple collection and gradually build it into increasingly ridiculous rigs. Collect hardware, generate resources, unlock new parts, and keep adding more things until it reaches its final form, or not.",
 		liveUrl: "https://danielcf2996.itch.io/thisisnteven",
 	}
+];
+
+export const RECORDS_DATA = [
+	{
+		title: "CTF Magic",
+		author: "RymonElaies",
+		description:
+			"Participation in a Capture The Flag event on the CTF Magic platform under the username RymonElaies, applying ethical hacking fundamentals such as network scanning and man-in-the-middle analysis.",
+		liveUrl: "https://online.ctfmagic.org/users/2028",
+	},
+];
+
+export const STATS_DATA = [
+	{ id: "videoGames", value: 5 },
+	{ id: "web", value: 7 },
+	{ id: "cybersecurity", value: 4 },
 ];
 
 export const SOCIAL_LINKS = [

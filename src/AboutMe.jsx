@@ -14,7 +14,7 @@ import { useLanguage } from "./context/LanguageContext";
 const GITHUB_LINK = SOCIAL_LINKS.find((item) => item.label === "GitHub")?.href;
 
 export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { goBack } = useSafeBackNavigation("/");
   const navigate = useNavigate();
   const panelRef = useRef(null);
@@ -25,6 +25,7 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
   const taglineText = t("aboutMe.tagline");
   const aboutText = t("aboutMe.aboutText");
   const quickFacts = t("aboutMe.quickFacts");
+  const focusItems = t("aboutMe.focus");
 
   const openGithub = useCallback(() => {
     if (!GITHUB_LINK) return;
@@ -205,13 +206,45 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
           z-index: 1;
         }
 
+        .about-panel {
+          scrollbar-width: thick;
+          scrollbar-color: #d63232 #0b1038;
+        }
+
         .about-panel::-webkit-scrollbar {
-          width: 10px;
+          width: 16px;
+        }
+
+        .about-panel::-webkit-scrollbar-track {
+          background: #0b1038;
+          box-shadow: inset 0 0 0 2px rgba(142, 245, 255, 0.4);
         }
 
         .about-panel::-webkit-scrollbar-thumb {
-          background: rgba(17, 34, 88, 0.42);
-          border-radius: 12px;
+          background: linear-gradient(180deg, #ff6b6b, #d63232 55%, #8b1b1b);
+          border: 3px solid #0b1038;
+          box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6);
+        }
+
+        .about-panel::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(180deg, #8ef5ff, #2aa7c4 55%, #0f5d78);
+        }
+
+        .about-scroll-hint {
+          position: sticky;
+          bottom: 0;
+          width: max-content;
+          margin: 14px 0 0 auto;
+          padding: 6px 10px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 18px;
+          letter-spacing: 1.2px;
+          color: #ecfcff;
+          background: #d63232;
+          box-shadow: 4px 4px 0 rgba(6, 10, 44, 0.55);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+          z-index: 3;
+          pointer-events: none;
         }
 
         .about-hero {
@@ -287,6 +320,44 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
           font-family: 'Montserrat', sans-serif;
           font-size: 16px;
           line-height: 1.5;
+          color: #122759;
+        }
+
+        .about-focus {
+          margin-top: 12px;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .about-focus-card {
+          min-width: 0;
+          background: rgba(12, 27, 74, 0.06);
+          border-left: 4px solid #d63232;
+          padding: 10px 12px;
+          clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+        }
+
+        .about-focus-card:nth-child(2) {
+          border-left-color: #1a327c;
+        }
+
+        .about-focus-card:nth-child(3) {
+          border-left-color: #0f9db8;
+        }
+
+        .about-focus-card-title {
+          font-family: 'Anton', sans-serif;
+          font-size: 22px;
+          letter-spacing: 0.6px;
+          color: #0c1b4a;
+        }
+
+        .about-focus-card-text {
+          margin-top: 6px;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px;
+          line-height: 1.45;
           color: #122759;
         }
 
@@ -410,6 +481,14 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
             font-size: 24px;
           }
 
+          .about-focus {
+            grid-template-columns: 1fr;
+          }
+
+          .about-focus-card {
+            clip-path: none;
+          }
+
           .about-links {
             gap: 8px;
           }
@@ -497,6 +576,16 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
             ))}
           </ul>
 
+          <h3 className="about-section-title">{t("aboutMe.focusTitle")}</h3>
+          <div className="about-focus">
+            {Array.isArray(focusItems) && focusItems.map((item) => (
+              <div className="about-focus-card" key={item.title}>
+                <div className="about-focus-card-title">{item.title}</div>
+                <div className="about-focus-card-text">{item.text}</div>
+              </div>
+            ))}
+          </div>
+
           <h3 className="about-section-title">{t("aboutMe.linksTitle")}</h3>
           <div className="about-links">
             {GITHUB_LINK ? (
@@ -523,6 +612,8 @@ export default function AboutMe({ mediaMuted = true, sfxMuted = true }) {
               {t("aboutMe.backToMenu")}
             </button>
           </div>
+
+          <div className="about-scroll-hint" aria-hidden="true">SCROLL ↓</div>
         </section>
       </div>
     </div>
